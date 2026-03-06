@@ -12,7 +12,9 @@ document.getElementById("sign-in-btn").addEventListener("click" , function(){
     console.log(password);
 // 3.match username & pass
     if(userName=="admin" && password=="admin123"){
-        // alert("Sign In Success");
+      // alert("Sign In Success");
+
+     window.location.assign("/home.html");
     }else{
         alert("Sign In Failed");
         return;
