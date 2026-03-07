@@ -19,14 +19,23 @@ const displayCards = (cards) => {
   }
 
   cards.forEach(card => {
+  colour ="";
+  if(card.status==="open"){
+    colour="border-t-4 border-green-600"
+  }else if(card.status==="closed"){
+   colour="border-t-4 border-purple-800"
+  }
 
     const div = document.createElement("div");
 
-    div.className = "bg-white p-5 shadow-md rounded-xl border-t-4 border-green-500 space-y-4 hover:shadow-xl transition mb-5";
-    div.addEventListener("click", () => loadSingleIssue(my_modal_5.showModal()));
+    div.className = `bg-white p-5 shadow-md rounded-xl  ${colour} space-y-4 hover:shadow-xl transition mb-5`;
+    div.addEventListener("click", () => {
+    my_modal_5.showModal();
+    loadSingleIssue(card.id);
+  });
 
     div.innerHTML = `
-      <div class="flex justify-between items-center">
+      <div  class="flex justify-between items-center">
         <img src="./assets/Open-Status.png" alt="" class="w-8">
         <p class="bg-[#FEECEC] py-1 px-6 rounded-full text-red-500 font-semibold text-sm">
           ${card.priority || "Medium"}
@@ -55,13 +64,13 @@ const displayCards = (cards) => {
     container.appendChild(div);
   });
 };
-// modal
+// modal issues
 const loadSingleIssue = async(id) => {
   const url=(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
 //   console.log(url)
   const res=await fetch (url);
   const details = await res.json();
-  displayStatusDetails(details.data);
+  displayStatusDetails (details.data);
 }
 const displayStatusDetails = (status)=>{
 console.log(status);
