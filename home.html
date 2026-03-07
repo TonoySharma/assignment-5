@@ -24,7 +24,7 @@
       </style>
      
 </head>
-<body class="">
+<body>
   <header class="border-b border-gray-300">
    <section class="py-4 bg-gray-200">
     <div class="ml-10 flex justify-between ">  
@@ -46,20 +46,20 @@
                        <path d="m21 21-4.3-4.3"></path>
                     </g>
                 </svg>
-                <input type="text" placeholder="Search issues..." required />
+                <input type="text" id="searchInput" placeholder="Search issues..." required />
             </label>
         </div>
-        <button class="btn bg-blue-800 text-white join-item">Search</button>
+        <button onclick="searchIssues('searchInput')" class="btn bg-blue-800 text-white join-item">Search</button>
      </div>      
     </div>
    </section>
   </header>
  <!-- main section -->
   <main class="w-[80%] mx-auto mt-10">
-    <div class="shadow p-6 rounded-xl">
-      <button id="all-filter-btn" class="border border-gray-300 bg-blue-800 text-white p-1 px-8">All</button>
-      <button id="Open-filter-btn" class="border border-gray-300 bg-gray-300  p-1 px-8">Open</button>
-      <button id="Closed-filter-btn" class="border border-gray-300 bg-gray-300  p-1 px-8">Closed</button>
+    <div class="shadow p-6 rounded-xl ">
+      <button onclick="toggleStyles('all-filter-btn')" id="all-filter-btn" class="border border-gray-300 bg-blue-800 text-white p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">All</button>
+      <button onclick="toggleStyles('open-filter-btn')" id="open-filter-btn" class="border border-gray-300 bg-gray-200  p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">Open</button>
+      <button onclick="toggleStyles('closed-filter-btn')" id="closed-filter-btn" class="border border-gray-300 bg-gray-200 p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">Closed</button>
     </div>
    <section class="mt-5 shadow rounded-xl p-6">
 
@@ -77,12 +77,12 @@
         
             <div class="flex items-center gap-2">
               <span class="h-4 w-4 rounded-full bg-emerald-600"></span>
-              <span class="text-lg font-medium">Open</span>
+              <span class="text-lg font-medium text-[#1F2937]">Open</span>
             </div>
 
             <div class="flex items-center gap-2">
               <span class="h-4 w-4 rounded-full bg-[#A855F7]"></span>
-              <span class="text-lg font-medium">Closed</span>
+              <span class="text-lg font-medium text-[#1F2937]">Closed</span>
             </div>
           </div>
      </div>
@@ -90,11 +90,84 @@
     </div>
    </section>
   </main>
-  <section class="w-[80%] mx-auto bg-[#FBFBFB]">
-    <div class="mt-3">
-      <img src="./assets/Open-Status.png" alt="">
+  
+  <!-- cards section -->
+ <section id="card-container"  class="w-[80%] mx-auto bg-[#FBFBFB] grid grid-cols-4 gap-5 mt-5 cursor-pointer shadow rounded-xl">
+  <div class="bg-white p-5 mb-3 ml-3 shadow-md rounded-xl border-t-4 border-green-500 space-y-4 hover:shadow-xl transition">
+    <!-- Top -->
+    <div class="flex justify-between items-center">
+      <img src="./assets/Open-Status.png" alt="" class="w-8">
+      <p class="bg-[#FEECEC] py-1 px-6 rounded-full text-red-500 font-semibold text-sm">
+        High
+      </p>
     </div>
-  </section>
+    <!-- Title -->
+    <div class="space-y-1">
+      <h1 class="font-bold text-lg">
+        Fix navigation menu on mobile devices
+      </h1>
+      <p class="text-[#64748B] text-sm">
+        The navigation menu doesn't collapse<br>properly on mobile devices...
+      </p>
+    </div>
+    <!-- Tags -->
+    <div class="flex gap-3">
+      <p class="bg-[#FEECEC] border text-[#EF4444] py-1 px-4 rounded-full font-semibold text-sm">
+        <i class="fa-solid fa-bug"></i> Bug </p>
+
+      <p class="bg-[#FFF8DB] border text-[#D97706] py-1 px-4 rounded-full font-semibold text-sm">
+        <i class="fa-regular fa-life-ring"></i> Help Wanted </p>
+    </div>
+
+    <hr class="border-[#E4E4E7]">
+
+    <!-- card footer -->
+    <div class="text-sm text-[#64748B]">
+      <h2>#1 by john_doe</h2>
+      <h2>1/15/2024</h2>
+    </div>
+  </div>
+ </section>
+ <!-- modal -->
+  <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div id="detaild-container" class="bg-gray-200 p-6 rounded-xl shadow-xl">
+     <h1 class="font-bold text-3xl pb-3">Fix broken image uploads</h1>
+    <div class="flex gap-2 items-center pb-5">
+       <p class="bg-[#00A96E] text-white rounded-full p-1 px-2">Opened</p>
+       <p class="text-[#64748B]">. Opened by Fahim Ahmed</p>
+       <p class="text-[#64748B]">. 22/02/2026</p>
+    </div>
+     <div class="flex gap-3">
+      <p class="bg-[#FEECEC] border text-[#EF4444] py-1 px-4 rounded-full font-semibold text-sm">
+        <i class="fa-solid fa-bug"></i> Bug </p>
+
+      <p class="bg-[#FFF8DB] border text-[#D97706] py-1 px-4 rounded-full font-semibold text-sm">
+        <i class="fa-regular fa-life-ring"></i> Help Wanted </p>
+    </div>
+      <p class="text-[#64748B] mt-5">The navigation menu doesn't collapse properly on mobile devices. Need to fix the <br>responsive behavior.</p>
+
+     <div class="mt-8 flex gap-30">
+     <div>
+      <p class="text-[#64748B]">Assignee:</p>
+      <h2 class="font-semibold text-2xl">Fahim Ahmed</h2>
+     </div>
+
+      <div>
+        <p class="text-[#64748B]">Priority:</p>
+        <p class="bg-red-600 rounded-full text-white py-1 px-4 font-semibold">High</p>
+      </div>
+     </div> 
+
+    <div class="modal-action">
+      <form method="">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
   <script src="script/home.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-console.log("sign in functionality comming");
+// console.log("sign in functionality comming");
 
 document.getElementById("sign-in-btn").addEventListener("click" , function(){
     // console.log("sign-in-btn button click");
@@ -19,6 +19,4 @@ document.getElementById("sign-in-btn").addEventListener("click" , function(){
         alert("Sign In Failed");
         return;
     }
-
-
 });
