@@ -91,6 +91,11 @@
    </section>
   </main>
   
+  <!-- loading section -->
+   <section id="spinner" class="flex justify-center items-center py-10 hidden">
+      <span class="loading loading-dots loading-xl"></span>
+   </section>
+
   <!-- cards section -->
  <section id="card-container"  class="w-[80%] mx-auto bg-[#FBFBFB] grid grid-cols-4 gap-5 mt-5 cursor-pointer shadow rounded-xl">
   <div class="bg-white p-5 mb-3 ml-3 shadow-md rounded-xl border-t-4 border-green-500 space-y-4 hover:shadow-xl transition">
@@ -128,45 +133,22 @@
     </div>
   </div>
  </section>
- <!-- modal -->
+
+ <!-- modal section -->
   <!-- Open the modal using ID.showModal() method -->
 <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
 
 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-  <div id="detaild-container" class="bg-gray-200 p-6 rounded-xl shadow-xl">
-     <h1 class="font-bold text-3xl pb-3">Fix broken image uploads</h1>
-    <div class="flex gap-2 items-center pb-5">
-       <p class="bg-[#00A96E] text-white rounded-full p-1 px-2">Opened</p>
-       <p class="text-[#64748B]">. Opened by Fahim Ahmed</p>
-       <p class="text-[#64748B]">. 22/02/2026</p>
-    </div>
-     <div class="flex gap-3">
-      <p class="bg-[#FEECEC] border text-[#EF4444] py-1 px-4 rounded-full font-semibold text-sm">
-        <i class="fa-solid fa-bug"></i> Bug </p>
-
-      <p class="bg-[#FFF8DB] border text-[#D97706] py-1 px-4 rounded-full font-semibold text-sm">
-        <i class="fa-regular fa-life-ring"></i> Help Wanted </p>
-    </div>
-      <p class="text-[#64748B] mt-5">The navigation menu doesn't collapse properly on mobile devices. Need to fix the <br>responsive behavior.</p>
-
-     <div class="mt-8 flex gap-35">
-     <div>
-      <p class="text-[#64748B]">Assignee:</p>
-      <h2 class="font-semibold text-2xl">Fahim Ahmed</h2>
-     </div>
-
-       <div>
-         <p class="text-[#64748B]">Priority:</p>
-         <p class="bg-red-600 rounded-full text-white  px-4 font-semibold">High</p>
-      </div>
-     </div> 
-
-    <div class="modal-action">
-      <form method="">
-        <button class="btn">Close</button>
-      </form>
-    </div>
+  
+  <div id="details-container" class="modal-box bg-gray-200 p-4 rounded-xl shadow-xl">
   </div>
+
+  <div class="modal-action">
+    <form method="dialog">
+      <button class="btn">Close</button>
+    </form>
+  </div>
+
 </dialog>
   <script src="script/home.js"></script>
 </body>

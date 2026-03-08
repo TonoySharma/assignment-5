@@ -23,42 +23,56 @@
 </head>
 <body>
   <!-- sign in section -->
-<section class="min-h-screen max-w-md bg-base-200 mx-auto shadow-xl rounded-xl mt-5 mb-5">
-     <div class="logo w-[100px] pt-32 mx-auto mb-8">
-    <img src="./assets/github-logo.png" alt="">
-   </div>
-   <div class="text-center">
-    <h1 class="mb-2 font-bold text-[#1F2937] text-3xl">GitHub Issues Tracker</h1>
-     <p class="text-[#64748B]">Sign in to manage your issues</p>
-   </div>
-   <!-- from -->
-    <div class="from pt-5">
-     <div class="card w-full max-w-sm shrink-0  mx-auto">
-       <div class="card-body">
-        <fieldset class="fieldset">
-          <label class="label font-bold text-black">Username</label>
-          <input id="input-username" type="text" class="input" placeholder="Enter Username"/>
-          <label class="label font-bold text-black">Password</label>
-          <input id="input-password" type="password" class="input" placeholder="Enter Password"/>
-          <button id="sign-in-btn" class="btn bg-[#1F2937] text-white mt-4 rounded-xl">Sign In</button>
-        </fieldset>
-        <div class="flex items-center my-5">
-          <div class="flex-grow h-px bg-gray-300"></div>
-            <span class="px-4 font-medium">OR</span>
-          <div class="flex-grow h-px bg-gray-300"></div>
-        </div>
-       </div>
-       <!-- Demo Credentials: -->
-       <div class="text-center">
-        <h2 class="text-[#64748B] mb-8">Demo Credentials:</h2>
-        <div class="bg-[#e7e9eb] p-5 font-semibold rounded">
-            Username: admin
-            <br>
-            Password: admin123
-        </div>
-       </div>
-     </div>
+<section class="min-h-screen max-w-md bg-base-200 mx-auto shadow-xl rounded-xl mt-5 mb-5 flex flex-col">
+
+  <div class="logo w-[100px] pt-20 mx-auto mb-8">
+    <img src="./assets/github-logo.png" alt="GitHub Logo">
   </div>
+
+  <div class="text-center">
+    <h1 class="mb-2 font-bold text-[#1F2937] text-3xl">GitHub Issues Tracker</h1>
+    <p class="text-[#64748B]">Sign in to manage your issues</p>
+  </div>
+
+  <!-- form -->
+  <div class="form pt-5">
+    <div class="card w-full max-w-sm mx-auto">
+      <div class="card-body">
+
+        <fieldset class="fieldset">
+
+          <label class="label font-bold text-black">Username</label>
+          <input id="input-username" type="text" class="input w-full" placeholder="Enter Username"/>
+
+          <label class="label font-bold text-black mt-3">Password</label>
+          <input id="input-password" type="password" class="input w-full" placeholder="Enter Password"/>
+
+          <button id="sign-in-btn" class="btn bg-[#1F2937] text-white mt-4 rounded-xl w-full">
+            Sign In
+          </button>
+
+        </fieldset>
+
+        <div class="flex items-center my-6">
+          <div class="flex-grow h-px bg-gray-300"></div>
+          <span class="px-4 font-medium text-gray-500">OR</span>
+          <div class="flex-grow h-px bg-gray-300"></div>
+        </div>
+
+      </div>
+
+      <!-- Demo Credentials -->
+      <div class="text-center pb-5">
+        <h2 class="text-[#64748B] mb-4">Demo Credentials:</h2>
+        <div class="bg-[#e7e9eb] p-4 font-semibold rounded text-sm">
+          Username: admin <br>
+          Password: admin123
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 <script src="script/sign-in.js"></script>
 </body>
