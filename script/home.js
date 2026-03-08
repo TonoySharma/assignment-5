@@ -38,7 +38,7 @@ const displayCards = (cards) => {
 
     div.innerHTML = `
       <div  class="flex justify-between items-center">
-        <img src="${card.status==='open'? './assets/Open-Status.png':'./assets/Closed-Status.png'}" alt="" class="w-8">
+        <img src="${card.status==='open' ? './assets/Open-Status.png':'./assets/Closed-Status.png'}" alt="" class="w-8">
         <p class="bg-[#FEECEC] py-1 px-6 rounded-full text-red-500 font-semibold text-sm">
           ${card.priority || "Medium"}
         </p>
@@ -104,7 +104,7 @@ const loadSingleIssue = async(id) => {
 }
 const displayStatusDetails = (status)=>{
   
-// console.log(status);
+ console.log(status);
 const detailsBox = document.getElementById("details-container");
 detailsBox.innerHTML=`
  <div class="border rounded-xl border-gray-300">
