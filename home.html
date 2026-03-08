@@ -55,13 +55,16 @@
    </section>
   </header>
  <!-- main section -->
-  <main class="w-[80%] mx-auto mt-10">
-    <div class="shadow p-6 rounded-xl ">
-      <button onclick="toggleStyles('all-filter-btn')" id="all-filter-btn" class="border border-gray-300 bg-blue-800 text-white p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">All</button>
-      <button onclick="toggleStyles('open-filter-btn')" id="open-filter-btn" class="border border-gray-300 bg-gray-200  p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">Open</button>
-      <button onclick="toggleStyles('closed-filter-btn')" id="closed-filter-btn" class="border border-gray-300 bg-gray-200 p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">Closed</button>
+  <main class="w-[80%] mx-auto mt-10 ">
+    <div class="shadow p-6 rounded-xl justify-center flex gap-4 text-center bg-gray-100">
+      <!-- all -->
+      <button onclick="filterCards('all');  toggleStyles('all-filter-btn')" id="all-filter-btn" class="border border-gray-300 bg-blue-800 text-white p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">All</button>
+      <!-- open -->
+      <button onclick="filterCards('open'); toggleStyles('open-filter-btn')" id="open-filter-btn" class="border border-gray-300 bg-gray-200  p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">Open</button>
+      <!-- closed -->
+      <button onclick="filterCards('closed');  toggleStyles('closed-filter-btn')" id="closed-filter-btn" class="border border-gray-300 bg-gray-200 p-1 cursor-pointer px-8 rounded hover:shadow-xl transition">Closed</button>
     </div>
-   <section class="mt-5 shadow rounded-xl p-6">
+   <section class="mt-5 shadow rounded-xl p-6 bg-gray-100">
 
      <div class="flex items-center gap-3">   
        <img src="./assets/Aperture.png" alt="" class="bg-[#ECE4FF] p-3 rounded-full">
@@ -69,7 +72,7 @@
        <div class="flex items-center justify-between w-full">
 
            <div>
-             <p class="font-bold">50 Issues</p>
+             <p id="issue-count" class="font-bold text-2xl">50 Issues</p>
              <p class="text-[#64748B]">Track and manage your project issues</p>
            </div>
 
@@ -90,7 +93,7 @@
     </div>
    </section>
   </main>
-  
+
   <!-- loading section -->
    <section id="spinner" class="flex justify-center items-center py-10 hidden">
       <span class="loading loading-dots loading-xl"></span>
@@ -135,7 +138,7 @@
  </section>
 
  <!-- modal section -->
-  <!-- Open the modal using ID.showModal() method -->
+  
 <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
 
 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
@@ -148,8 +151,9 @@
       <button class="btn">Close</button>
     </form>
   </div>
-
+  </div>
 </dialog>
+
   <script src="script/home.js"></script>
 </body>
 </html>

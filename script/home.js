@@ -17,11 +17,12 @@ const displayCards = (cards) => {
 
   if (!cards || cards.length === 0) {
     container.innerHTML = "<p class='text-center text-gray-500'>No issues found</p>";
+    updateCount([]);
     return;
   }
 
   cards.forEach(card => {
-  colour ="";
+  let colour = "";
   if(card.status==="open"){
     colour ="border-t-4 border-green-600"
   }else if(card.status==="closed"){
@@ -30,9 +31,9 @@ const displayCards = (cards) => {
 
     const div = document.createElement("div");
 
-    div.className = `bg-white p-5 shadow-md rounded-xl  ${colour} space-y-4 hover:shadow-xl transition mb-5`;
+    div.className = `bg-white p-5 shadow-md rounded-xl ${colour} space-y-4 hover:shadow-xl transition mb-5`;
     div.addEventListener("click", () => {
-    my_modal_5.showModal();
+    // my_modal_5.showModal();
     loadSingleIssue(card.id);
   });
 
@@ -62,10 +63,15 @@ const displayCards = (cards) => {
         <h2>${card.date || ""}</h2>
       </div>
     `;
-
     container.appendChild(div);
   });
+ updateCount(cards);
 };
+// issues count
+const updateCount = (cards) => {
+  document.getElementById("issue-count").innerText = cards.length;
+};
+
 
 // loading container
 const loadingSpinner =(isLoading)=>{
@@ -104,7 +110,7 @@ const loadSingleIssue = async(id) => {
 }
 const displayStatusDetails = (status)=>{
   
- console.log(status);
+//  console.log(status);
 const detailsBox = document.getElementById("details-container");
 detailsBox.innerHTML=`
  <div class="border rounded-xl border-gray-300">
@@ -112,19 +118,19 @@ detailsBox.innerHTML=`
        <h1 class="font-bold text-3xl pb-3">${status.title}</h1>
     <div class="flex gap-2 items-center pb-5">
        <p class="bg-[#00A96E] text-white rounded-full p-1 px-2">${status.status}</p>
-       <p class="text-[#64748B]">. Opened by Fahim Ahmed</p>
+       <p class="text-[#64748B]">.${status.author}</p>
        <p class="text-[#64748B]">.${status.createdAt}</p>
     </div>
      <div class="flex gap-3">
       <p class="bg-[#FEECEC] border text-[#EF4444] py-1 px-4 rounded-full font-semibold text-sm">
-        <i class="fa-solid fa-bug"></i>${status.labels}</p>
+        <i class="fa-solid fa-bug"></i>${status.labels.join(", ")}</p>
 
       <p class="bg-[#FFF8DB] border text-[#D97706] py-1 px-4 rounded-full font-semibold text-sm">
-        <i class="fa-regular fa-life-ring"></i> Help Wanted </p>
+        <i class="fa-regular fa-life-ring"></i>${status.author}</p>
     </div>
       <p class="text-[#64748B] mt-5">${status.description}</p>
 
-     <div class="mt-8 flex gap-30 bg-[#d0e5fa50] p-3 rounded-xl">
+     <div class="mt-8 flex gap-30 bg-[#d0e5fa50] p-3 rounded-xl justify-between">
      <div>
       <p class="text-[#64748B]">Assignee:</p>
       <h2 class="font-semibold text-2xl">${status.assignee}</h2>
@@ -141,20 +147,18 @@ detailsBox.innerHTML=`
 document.getElementById("my_modal_5").showModal();
 }
 
-
 // Search Input
 const searchIssues = () => {
   const searchText = document.getElementById("searchInput").value.trim();
-
-  if (searchText === "") {
-    displayCards(allCards);
-    return;
-  }
+  loadingSpinner(true);
 
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`)
     .then(res => res.json())
-    .then(json => displayCards(json.data))
-    .catch(err => console.error(err));
+    .then(json => {
+      displayCards(json.data);
+
+      loadingSpinner(false);
+    });
 };
 
 // FILTER (with search + filter)

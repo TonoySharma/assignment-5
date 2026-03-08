@@ -1,5 +1,4 @@
 
-
 document.getElementById("sign-in-btn").addEventListener("click" , function(){
     // console.log("sign-in-btn button click");
 // 1.get username input
